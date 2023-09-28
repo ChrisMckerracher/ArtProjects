@@ -99,6 +99,7 @@ body {
     border: var(--triangle-width) solid transparent;
     border-bottom: 0;
     border-top: var(--triangle-length) solid transparent;
+    border-radius: 300px;
 
 }
 
