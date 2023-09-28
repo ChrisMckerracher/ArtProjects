@@ -82,7 +82,7 @@ class Jukebox {
 
     async playLoop() {
         this.hasIntroPlayed = true;
-        this.loopCount = Math.floor(Math.random() * 5);
+        this.loopCount = Math.floor(Math.random() * 3);
         this.loopCount *= 4;
         this.loop.addEventListener('ended', this.loopMain)
         this.loopMain();
