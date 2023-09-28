@@ -2,7 +2,7 @@
 
     --triangle-length: 110vh;
     --triangle-width: calc(100vw / 6);
-    --triangle-color: green;
+    --triangle-color: #000000;
     --odd-triangle-color: yellow;
     --swirlie-thickness: 4vw;
     --swirlie-blend: 0px;
@@ -14,7 +14,7 @@
     --swirlies-shadow-height: 95%;
     --swirlies-shadow-width: 100%;
 
-    --odd-color: green;
+    --odd-color: #f1f1f1;
     --odd-swirlie-thickness: 15vw;
     --odd-swirlie-blend: 0px;
     --odd-swirlie-length: 3px;
