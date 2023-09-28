@@ -3,7 +3,7 @@
     import {onDestroy, onMount} from "svelte";
     import thisMustStart from "../assets/thisloop/intro.mp3";
     import thisMustLoop from "../assets/thisloop/main.mp3";
-    import thisMustCool from "../assets/thisloop/coolBit.mp3"
+    import thisMustCool from "../assets/thisloop/coolbit.mp3"
     import Jukebox from "./Jukebox";
 
     let jukeBox: Jukebox | undefined;
