@@ -12,7 +12,6 @@
 
     async function toggleLight() {
         // pls stop the god damn bug its probably a memory leak
-        await new Promise(r => setTimeout(r, 300));
         await lampSoundEffect.play();
         lightOn = !lightOn;
         dispatch("clicked", {});
@@ -78,7 +77,22 @@
         }
     }
 
-    @media (orientation: landscape) and (max-width: 1200px) {
+    @media (orientation: landscape) and (max-height: 350px) {
+        .lamp {
+        }
+
+        img {
+            width: 30vw;
+        }
+
+        #light {
+            border-bottom: 70vh solid #FFFF00;
+            width: calc(31vw - 3px);
+            transform: translate(-1px, 73vh);
+        }
+    }
+
+    @media (orientation: landscape) and (max-width: 1200px) and (min-height: 350px) {
         .lamp {
         }
 
@@ -91,6 +105,7 @@
             transform: translate(-1px, 54vh);
         }
     }
+
 
 
 </style>
