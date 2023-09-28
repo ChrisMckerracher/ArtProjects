@@ -23,12 +23,23 @@
 
     --pills-pattern-size: 16vw;
     --pills-border-size: 1px;
+    --pills-height: 100vw;
+    --pills-width: 110vh;
 
     --swirlies-animation-speed: 8s;
     --swirlies-animation-direction: forwards;
 
     --triangles-animation-speed: 8s;
     --triangles-animation-direction: reverse;
+
+    --triangles-transform-x: 0%;
+    --triangles-transform-y: -50%;
+
+    --swirlie-transform-x: -50%;
+    --swirlie-transform-y: -50%;
+
+    --pills-transform-x: -50%;
+    --pills-transform-y: -50%;
 }
 
 {
@@ -61,6 +72,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .swirlie {
@@ -85,16 +97,16 @@ body {
 
 
 .swirlie-pills span {
-    width: 100vw;
-    height: 110vh;
-    transform: translate(-50%, -50%) rotate(calc(30deg * var(--i)));
+    width: var(--pills-height);
+    height: var(--pills-width);
+    transform: translate(var(--pills-transform-x), var(--pills-transform-y)) rotate(calc(30deg * var(--i)));
     transform-origin: bottom right;
     border-radius: var(--pills-pattern-size);
     border: var(--pills-border-size) solid white;
 }
 
 .swirlie-triangles span {
-    transform: translate(0%, -50%) rotate(calc(30deg * var(--i)));
+    transform: translate(var(--triangles-transform-x), var(--triangles-transform-y)) rotate(calc(30deg * var(--i)));
     transform-origin: bottom;
     border: var(--triangle-width) solid transparent;
     border-bottom: 0;
@@ -118,7 +130,7 @@ body {
 .swirlie span {
     width: 100vw;
     height: 110vh;
-    transform: translate(-50%, -50%) rotate(calc(30deg * var(--i)));
+    transform: translate(var(--swirlie-transform-x), var(--swirlie-transform-y)) rotate(calc(30deg * var(--i)));
     transform-origin: bottom right;
     border-radius: 100vw;
 }
