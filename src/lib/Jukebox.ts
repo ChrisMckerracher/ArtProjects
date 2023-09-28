@@ -61,10 +61,10 @@ class Jukebox {
     }
 
     async play() {
+        await this.isInited();
         if (this.dontStart) {
             return;
         }
-        await this.isInited();
         if (!this.hasIntroPlayed) {
             this.intro.addEventListener('ended', this.playLoop)
             this.intro.start(this.audioContext.currentTime);
