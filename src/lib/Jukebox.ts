@@ -15,8 +15,10 @@ class Jukebox {
 
     loopPlaying: Boolean
     coolPlaying: Boolean
+    dontStart: Boolean
 
     constructor(intro: string, loop: string, coolBit: string) {
+        this.dontStart = false;
         this.audioContext = new AudioContext();
         this.intro = this.audioContext.createBufferSource();
         this.loop = this.audioContext.createBufferSource();
@@ -59,6 +61,9 @@ class Jukebox {
     }
 
     async play() {
+        if (this.dontStart) {
+            return;
+        }
         await this.isInited();
         if (!this.hasIntroPlayed) {
             this.intro.addEventListener('ended', this.playLoop)

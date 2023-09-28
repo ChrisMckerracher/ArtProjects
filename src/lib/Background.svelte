@@ -14,6 +14,7 @@
     });
 
     onDestroy(async () => {
+        jukeBox.dontStart = true;
         (jukeBox as Jukebox).stop();
     })
 
