@@ -11,6 +11,9 @@
     --swirlie-color: blue;
     --swirlie-center: 26vw;
 
+    --swirlies-shadow-height: 95%;
+    --swirlies-shadow-width: 100%;
+
     --odd-color: green;
     --odd-swirlie-thickness: 15vw;
     --odd-swirlie-blend: 0px;
@@ -122,8 +125,8 @@ body {
 .swirlie span::before {
     content: '';
     position: absolute;
-    height: 100%;
-    width: 100%;
+    height: var(--swirlies-shadow-height);
+    width: var(--swirlies-shadow-width);
     top: 0vh;
     left: 20vw;
     border-bottom-right-radius: var(--swirlie-center);

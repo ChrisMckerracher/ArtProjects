@@ -13,6 +13,8 @@
         new Property("--swirlie-offset", -20, 20, "px"),
         new Property("--swirlie-color", 0, 16777215, "#"),
         new Property("--swirlie-center", 15, 35, "vw"),
+        new Property("--swirlies-shadow-height", 80, 120, "%"),
+        new Property("--swirlies-shadow-width", 90, 120, "%"),
 
         new Property("--odd-color", 0, 16777215, "#"),
         new Property("--odd-swirlie-thickness", 1, 20, "vw"),
