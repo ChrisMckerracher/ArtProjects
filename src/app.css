@@ -47,9 +47,17 @@
 
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
     overflow:hidden;
     background-color: var(--triangle-color);
+}
+
+* {
+    touch-action: manipulation;
 }
 
 @keyframes cw {
