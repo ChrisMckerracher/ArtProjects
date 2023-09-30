@@ -11,7 +11,6 @@
 
 
     async function toggleLight() {
-        // pls stop the god damn bug its probably a memory leak
         await lampSoundEffect.play();
         lightOn = !lightOn;
         dispatch("clicked", {});

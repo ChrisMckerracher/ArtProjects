@@ -3,25 +3,23 @@ import type JukeboxBuffer from "./JukeboxBuffer";
 class JukeboxFileResolver {
 
     static async resolve(path: string, buffer: JukeboxBuffer): Promise<void> {
-        await fetch(path)
-            .then(response => response.arrayBuffer())
-            .then(data => {
-                buffer.audioContext.decodeAudioData(data, decodedBuffer => {
+        await JukeboxFileResolver.localStorageOrFetch(path)
+            .then(abuffer => buffer.audioContext.decodeAudioData(abuffer, decodedBuffer => {
                     // 🤮
                     buffer.buffer.buffer = decodedBuffer;
                     buffer.duration = decodedBuffer.duration
                     buffer.isInited = true;
-                });
-                return data;
-            })
-            .then(buffer => JukeboxFileResolver.save(path, buffer));
+                })
+            )
+            .then(abuffer => JukeboxFileResolver.save(path, abuffer));
     }
 
     static async localStorageOrFetch(path: string): Promise<ArrayBuffer | undefined> {
         let storageString: string | null = localStorage.getItem(path);
 
-        if (storageString) {
-            return Object.setPrototypeOf(JSON.parse(storageString), ArrayBuffer.prototype);
+        if (storageString && storageString != "{}") {
+            console.log(new Uint8Array(JSON.parse(storageString)).buffer);
+            return new Uint8Array(JSON.parse(storageString)).buffer; //Object.setPrototypeOf(JSON.parse(storageString), ArrayBuffer.prototype);
         }
 
         let aBuffer: ArrayBuffer | undefined;
@@ -33,10 +31,12 @@ class JukeboxFileResolver {
     }
 
     static save(path: string, aBuffer: ArrayBuffer) {
-        if (localStorage.getItem(path)) {
+        let lStorageBuffer: string | null = localStorage.getItem(path)
+        if (!lStorageBuffer || lStorageBuffer != "{}") {
             return;
         }
-        localStorage.setItem(path, JSON.stringify(aBuffer));
+
+        localStorage.setItem(path, JSON.stringify(Array.from(new Uint8Array(aBuffer))));
     }
 
 }
