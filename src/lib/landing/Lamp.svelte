@@ -1,7 +1,7 @@
 <script>
-    import lamp from "../assets/lamp.svg";
+    import lamp from "../../assets/lamp.svg";
     import {createEventDispatcher} from "svelte";
-    import lampSound from "../assets/lampOn.mp3";
+    import lampSound from "../../assets/lampOn.mp3";
 
     let dispatch = createEventDispatcher();
 

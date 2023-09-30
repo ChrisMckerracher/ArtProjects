@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Property from "./Property.js";
+    import Property from "../Property.js";
     import {onDestroy, onMount} from "svelte";
-    import thisMustStart from "../assets/thisloop/intro.mp3";
-    import thisMustLoop from "../assets/thisloop/main.mp3";
-    import thisMustCool from "../assets/thisloop/coolbit.mp3"
-    import Jukebox from "./Jukebox";
+    import thisMustStart from "../../assets/thisloop/intro.mp3";
+    import thisMustLoop from "../../assets/thisloop/main.mp3";
+    import thisMustCool from "../../assets/thisloop/coolbit.mp3"
+    import Jukebox from "../jukebox/Jukebox.ts";
 
     let jukeBox: Jukebox | undefined;
 
