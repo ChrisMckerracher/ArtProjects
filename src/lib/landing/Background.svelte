@@ -2,14 +2,13 @@
     import Property from "../Property.js";
     import {onDestroy, onMount} from "svelte";
     import thisMustStart from "../../assets/thisloop/intro.mp3";
-    import thisMustLoop from "../../assets/thisloop/main.mp3";
     import thisMustCool from "../../assets/thisloop/coolbit.mp3"
     import Jukebox from "../jukebox/Jukebox.ts";
 
     let jukeBox: Jukebox | undefined;
 
     onMount(async () => {
-        jukeBox = new Jukebox(thisMustStart, thisMustLoop, thisMustCool);
+        jukeBox = new Jukebox(thisMustStart, thisMustCool);
         jukeBox.play();
     });
 
@@ -80,14 +79,3 @@
         <span style="--i:{i};"></span>
     {/each}
 </div>
-
-<audio id="intro">
-    <source src={thisMustStart} type="audio/mp3">
-</audio>
-<audio src={thisMustLoop} id="loop">
-    <source src={thisMustLoop} type="audio/mp3">
-</audio>
-
-<audio src={thisMustCool} id="cool">
-    <source src={thisMustCool} type="audio/mp3">
-</audio>

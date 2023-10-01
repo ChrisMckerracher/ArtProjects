@@ -4,7 +4,6 @@ class Jukebox {
     audioContext: AudioContext;
     intro: JukeboxBuffer
     loop: JukeboxBuffer
-    coolBit: JukeboxBuffer
     loopCount: number;
 
     offsetTime: number;
@@ -12,30 +11,26 @@ class Jukebox {
     hasIntroPlayed: Boolean
     dontStart: Boolean
 
-    constructor(intro: string, loop: string, coolBit: string) {
+    constructor(intro: string, loop: string) {
         this.dontStart = false;
         this.audioContext = new AudioContext();
 
         this.intro = new JukeboxBuffer(this.audioContext);
         this.loop = new JukeboxBuffer(this.audioContext);
-        this.coolBit = new JukeboxBuffer(this.audioContext);
 
         this.loopCount = 0;
         this.hasIntroPlayed = false;
 
         this.intro.init(intro);
         this.loop.init(loop);
-        this.coolBit.init(coolBit);
-
 
         this.playLoop = this.playLoop.bind(this);
-        this.loopMain = this.loopMain.bind(this);
-        this.offsetTime = 0.06;
+        this.offsetTime = 0.057;
 
     }
 
     async isInited() {
-        while (!this.intro.isInited || !this.loop.isInited || !this.coolBit.isInited) {
+        while (!this.intro.isInited || !this.loop.isInited) {
             await new Promise(r => setTimeout(r, 100));
         }
     }
@@ -55,24 +50,13 @@ class Jukebox {
 
     async playLoop() {
         this.hasIntroPlayed = true;
-        this.loopCount = Math.floor(Math.random() * 3);
-        this.loopCount *= 4;
-        this.loopMain();
-    }
 
-    async loopMain() {
-        if (this.loopCount > 0) {
-            this.loopCount--;
-            this.loop.play(this.offsetTime, this.loopMain);
-        } else {
-            this.coolBit.play(this.offsetTime, this.playLoop)
-        }
+        this.loop.play(this.offsetTime, this.playLoop);
     }
 
     stop() {
         this.intro.stop();
         this.loop.stop();
-        this.coolBit.stop();
     }
 }
 
