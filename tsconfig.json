@@ -13,8 +13,25 @@
      */
     "allowJs": true,
     "checkJs": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": "./",
+    "paths": {
+      "utils/*": "src/lib/util/*",
+      "jukebox/*": "src/lib/jukebox/*",
+      "appConstants/*": "src/lib/constants/*",
+      "db/*": "src/lib/db/*"
+    }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.svelte"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+
 }
